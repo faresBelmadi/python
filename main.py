@@ -71,3 +71,18 @@ init.terrain.bind("<Button-1>",reportEventClick)
 init.terrain.pack()
 
 grille.root.mainloop()
+
+
+torpilleur = Bateau.Bateau(2)
+contre_torpilleur = Bateau.Bateau(3)
+croiseur = Bateau.Bateau(4)
+sous_marin = Bateau.Bateau(3)
+porte_avion = Bateau.Bateau(5)
+
+bateaux=[torpilleur,contre_torpilleur,croiseur,sous_marin,porte_avion]
+
+roger = Joueur.Joueur("roger",bateaux)
+bob = Joueur.Joueur("bob",bateaux)
+
+jeu = BatailleNavale([roger,bob])
+jeu.jouer()

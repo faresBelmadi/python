@@ -4,25 +4,28 @@ class Joueur:
 
     def __init__(self,pseudo,bateaux):
         self.pseudo=pseudo
-        self.grilleTerrain=[[]]
-        self.grilleVisee=[[]]
+        self.grilleTerrain=Grille()
+        self.grilleVisee= Grille()
         self.bateaux= bateaux
 
     def viserUneCase(self):
         case=input("choisir une case")
-        colonne=ord(case[0])
-        print(colonne)
+        colonne = ord(lower(case[0])-65) 
+        ligne = case[1:]
+        caseVisee=(ligne,colonne)
+        self.grilleVisee.setVisee(caseVIsee)
         return caseVisee
 
-    def notifierToucher(self,caseVisee):
-        #modifier self.grilleVisee
-        print("j'ai touché")
+    def notifierTouchee(self,caseVisee):
+        self.grilleVisee.setTouchee(caseVisee)
         return
 
     def estTouche(self, caseVisee):
-        print("je vérifie si j'ai un bateau sur la case")
-        return True
+        for bateau in self.bateaux:
+            if bateau.contient(caseVisee):
+                return True
+        return False
 
     def notifierCaseTouchee(self,caseVisee):
-        print("j'ai été touché sur  "+caseVisee)
+        self.grilleTerrain.setTouchee(caseVisee)
         return
