@@ -8,6 +8,9 @@ class Joueur:
         self.grilleVisee= Grille()
         self.bateaux= bateaux
 
+
+#ne concerne pas le Joueur
+"""
     def viserUneCase(self):
         case=input("choisir une case")
         colonne = ord(lower(case[0])-65)
@@ -30,4 +33,4 @@ class Joueur:
 
     def notifierCaseTouchee(self,caseVisee):
         self.grilleTerrain.setTouchee(caseVisee)
-        return
+        return"""
