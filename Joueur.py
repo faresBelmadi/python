@@ -2,11 +2,15 @@ import Bateau
 
 class Joueur:
 
-    def __init__(self,pseudo,bateaux):
+    def __init__(self,pseudo):
         self.pseudo=pseudo
         self.grilleTerrain=Grille()
         self.grilleVisee= Grille()
-        self.bateaux= bateaux
+        self.bateaux = [5]
+
+    def AjoutBateau(self,bateauInit):
+        self.bateaux.append(bateauInit)
+
 
 
 #ne concerne pas le Joueur
