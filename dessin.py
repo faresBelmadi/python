@@ -70,5 +70,5 @@ class Dessin:
                         if j+50 > self.y > j:
                             self.CaseX = (i-540)/50
                             self.CaseY = j/50
-                            print (str(self.CaseX) + ", " + str(self.CaseY+self.alpha))
+                            print (str(self.CaseX) + ", " + chr(self.CaseY+self.alpha))
                             self.terrain.create_oval(i,j,i+50,j+50,fill="red")
