@@ -58,7 +58,7 @@ def reportEventClick(event):
         ClickX = event.x
         ClickY = event.y
         print (str(ClickX) + ", " + str(ClickY))
-        dessinBateau.GetCoord(ClickX,ClickY)
+        dessinBateau.SetCoord(ClickX,ClickY)
 
         if dessinBateau.phasePlacement == True:
             if 540 > ClickX > 40:

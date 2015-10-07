@@ -15,9 +15,13 @@ class Dessin:
         self.nombreBateau = 0
         self.phasePlacement = True
 
-    def GetCoord(self,xinit,yinit):
+    def SetCoord(self,xinit,yinit):
         self.y = yinit
         self.x = xinit
+
+    def GetCoord(self):
+        tab = [self.CaseX,self.CaseY]
+        return
 
     def GetTerrain(self,terraininit):
         self.terrain = terraininit
@@ -63,4 +67,8 @@ class Dessin:
             if i +50 > self.x > i:# si la coordonnee x est comprise entre i et i+50
                 for j in range(10,510,50) :
                         if j+50 > self.y > j:
+                            self.CaseX = (i-540)/50
+                            self.CaseY = j/50
+
+                            print (str(self.CaseX) + ", " + str(self.CaseY))
                             self.terrain.create_oval(i,j,i+50,j+50,fill="red")
