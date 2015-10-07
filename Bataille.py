@@ -3,15 +3,28 @@ import Bateau
 
 class BatailleNavale:
 
-    def __init__(self,joueurs):
-        self.joueurs=joueurs
-        self.indiceJoueurCourant=0
-
-    def jouerUnTour(self, caseVisee):
-        joueurCourant=self.joueurs[self.indiceJoueurCourant]
-        joueurEnnemi=self.joueurs[1-self.indiceJoueurCourant]
-        aTouche = joueurEnnemi.estTouche(caseVisee)
-        if aTouche:
-            joueurCourant.notifierTouchee(caseVisee)
-            joueurEnnemi.notifierCaseTouchee(caseVisee)
-        self.indiceJoueurCourant=1-self.indiceJoueurCourant
+    def __init__(self, socket, estClient):
+        self.joueur=[]
+        self.socket=socket
+        self.client = estClient
+        self.caseVisee=()
+        
+    def jouerUnTour(self):
+        if self.client == False:
+            self.joueur.notifierVisee(self.caseVisee)
+            socket.sendVise(self.caseVisee)
+            aTouche=socket.receiv()
+            if aTouche:
+                self.joueurs[0].notifierTouchee(self.caseVisee)
+            toucheVisee= socket.receiv()
+            self.socket.send(self.joueur.estTouche(self.caseVisee))
+        else:            
+            toucheVisee= socket.receiv()
+            self.socket.send(self.joueur.estTouche(self.caseVisee))
+            while(self.joueur.aTire == False):
+                self.joueur.notifierVisee(self.caseVisee)
+                socket.sendVise(self.caseVisee)
+                aTouche=socket.receiv()
+                if aTouche:
+                    self.joueurs[0].notifierTouchee(self.caseVisee)
+            self.jouerUnTour()

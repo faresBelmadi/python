@@ -22,7 +22,7 @@ import grille
 import dessin
 import Joueur
 import Bataille
-import socket
+import socketBN
 
 
 """
@@ -66,19 +66,24 @@ def reportEventClick(event):
                     dessinBateau.dessinBateau()
 
         else:
+            roger.ajoutBateaux(dessinBateau.getPositionsBateaux())
             if 1090 > ClickX > 590:
                 if 510 > ClickY > 10:
                     dessinBateau.dessinVisee()
-                    jeu.jouerUnTour(dessinBateau.GetCoord())
+                    jeu.caseVisee=dessinBateau.GetCoord()
+                    jeu.jouerUnTour()
 
 
 init = grille.grilleInit()
 eventClick = event.Event()
 dessinBateau = dessin.Dessin()
-roger = Joueur.Joueur("roger")
-bob = Joueur.Joueur("bob")
 
-jeu = Bataille.BatailleNavale([roger,bob])
+text = Text(init.terrain)
+text.insert("Entrer un pseudo")
+
+roger = Joueur.Joueur(nom)
+
+jeu = Bataille.BatailleNavale(roger,True)
 
 dessinBateau.GetTerrain(init.GetTerrain())
 

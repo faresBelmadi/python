@@ -1,7 +1,6 @@
 class Bateau:
 
-    def __init__(self, taille):
-        self.taille=taille
+    def __init__(self, positions):
         self.estCoule=False
         self.positions=[()]
 

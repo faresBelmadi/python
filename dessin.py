@@ -8,6 +8,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*
 
+import Bateau
 
 class Dessin:
 
@@ -25,6 +26,9 @@ class Dessin:
         pos = (self.CaseX,self.CaseY)
         return pos
 
+    def getPositionsBateaux(self):
+        return self.positionsBateaux
+    
     def GetTerrain(self,terraininit):
         self.terrain = terraininit
 
@@ -52,7 +56,7 @@ class Dessin:
                                     pos=(round(i/50),round(j/50+4))
                                     position.append(pos)
                                     print(position)
-                                    self.positionsBateaux.append(position)
+                                    self.positionsBateaux.append(Bateau.Bateau(positions))
                                     self.nombreBateau +=1
 
                             elif self.nombreBateau == 1:
@@ -72,7 +76,7 @@ class Dessin:
                                             pos=(round(i/50),round(j/50+3))
                                             position.append(pos)
                                             print(position)
-                                            self.positionsBateaux.append(position)
+                                            self.positionsBateaux.append(Bateau.Bateau(positions))
                                             self.nombreBateau +=1
 
                             elif self.nombreBateau == 2:
@@ -89,7 +93,7 @@ class Dessin:
                                         pos=(round(i/50),round(j/50+2))
                                         position.append(pos)
                                         print(position)
-                                        self.positionsBateaux.append(position)
+                                        self.positionsBateaux.append(Bateau.Bateau(positions))
                                         self.nombreBateau +=1
 
                             elif self.nombreBateau == 3:
@@ -106,7 +110,7 @@ class Dessin:
                                         pos=(round(i/50),round(j/50+2))
                                         position.append(pos)
                                         print(position)
-                                        self.positionsBateaux.append(position)
+                                        self.positionsBateaux.append(Bateau.Bateau(positions))
                                         self.nombreBateau +=1
 
                             elif self.nombreBateau == 4:
@@ -120,7 +124,7 @@ class Dessin:
                                         pos=(round(i/50),round(j/50+1))
                                         position.append(pos)
                                         print(position)
-                                        self.positionsBateaux.append(position)
+                                        self.positionsBateaux.append(Bateau.Bateau(positions))
                                         self.nombreBateau +=1
                                         self.phasePlacement = False
 
@@ -145,7 +149,7 @@ class Dessin:
 
     def estSuperpose(self,pos):
         for bateau in self.positionsBateaux:
-            for position in bateau:
+            for position in bateau.positions:
                 if pos == position:
                     return True
         return False
