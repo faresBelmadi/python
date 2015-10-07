@@ -16,15 +16,43 @@ class socketClient():
 
 
     def __init__(self,addresseDistante,portDistant):
-        self.socketClient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socketClient.connect((addresseDistante, portDistant))
+        try:
+
+            self.socketClient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.socketClient.connect((addresseDistante, portDistant))
+        except ValueError:
+            print "Erreur connexion"
 
 
 
+    def sendVise(self,case):
+        try:
+            chCase = str(case[0])+str(case[1])
+            self.socketClient.send(chCase)
+        except ValueError:
+            print "Erreur d'envoi"
+    def receivVise(self):
 
+        try:
+            self.chRecept = self.socketClient.recv(255)
+
+        except ValueError:
+            print "Erreur de reception"
+
+        return self.chRecept
 
 class socketServeur():
 
     def __init__(self,portEcoute):
-        self.socketServeur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socketServeur.bind(('', portEcoute))
+        try:
+
+            self.socketServeur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            self.socketServeur.bind(('', portEcoute))
+            self.socketServeur.accept()
+            self.socketServeur.listen(1)
+            break
+        except ValueError:
+            print "Erreur connexion"
+
+
+
