@@ -26,12 +26,15 @@ class socketClient():
 
 
     def sendVise(self,case):
+
         try:
             chCase = str(case[0])+str(case[1])
             self.socketClient.send(chCase)
         except ValueError:
             print "Erreur d'envoi"
-    def receivVise(self):
+
+
+    def receiv(self):
 
         try:
             self.chRecept = self.socketClient.recv(255)
@@ -40,6 +43,9 @@ class socketClient():
             print "Erreur de reception"
 
         return self.chRecept
+
+    def __del__(self):
+        self.socketClient.close()
 
 class socketServeur():
 
@@ -55,4 +61,24 @@ class socketServeur():
             print "Erreur connexion"
 
 
+    def sendVise(self,case):
+
+        try:
+            chCase = str(case[0])+str(case[1])
+            self.socketServeur.send(chCase)
+        except ValueError:
+            print "Erreur d'envoi"
+
+
+    def receiv(self):
+
+        try:
+            self.chRecept = self.socketServeur.recv(255)
+
+        except ValueError:
+            print "Erreur de reception"
+
+        return self.chRecept
+    def __del__(self):
+        self.socketServeur.close()
 
