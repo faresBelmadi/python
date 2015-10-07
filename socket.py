@@ -33,6 +33,13 @@ class socketClient():
         except ValueError:
             print "Erreur d'envoi"
 
+    def sendRetour(self,chaine):
+
+        try:
+            self.socketClient.send(chaine)
+        except ValueError:
+            print "Erreur d'envoi"
+
 
     def receiv(self):
 
@@ -66,6 +73,13 @@ class socketServeur():
         try:
             chCase = str(case[0])+str(case[1])
             self.socketServeur.send(chCase)
+        except ValueError:
+            print "Erreur d'envoi"
+
+    def sendRetour(self,chaine):
+
+        try:
+            self.socketServeur.send(chaine)
         except ValueError:
             print "Erreur d'envoi"
 

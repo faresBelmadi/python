@@ -22,6 +22,7 @@ import grille
 import dessin
 import Joueur
 import Bataille
+import socket
 
 
 """
@@ -64,7 +65,7 @@ def reportEventClick(event):
                 if 510 > ClickY > 10:
                     dessinBateau.dessinBateau()
 
-        else: 
+        else:
             if 1090 > ClickX > 590:
                 if 510 > ClickY > 10:
                     dessinBateau.dessinVisee()
