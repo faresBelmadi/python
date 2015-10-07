@@ -7,12 +7,23 @@
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 # -*- coding: utf-8 -*
+import sys
 
-from Tkinter import *
+if (sys.version_info > (3, 0)):
+     # Python 3 code in this block
+    from tkinter import *
+else:
+     # Python 2 code in this block
+    from Tkinter import *
+
 
 import event
 import grille
 import dessin
+import Joueur
+import Bataille
+
+
 """
     2 joueurs
     5 bateaux
@@ -61,28 +72,27 @@ def reportEventClick(event):
 
 
 
-init = grille.grille()
+init = grille.grilleInit()
 eventClick = event.Event()
 dessinBateau = dessin.Dessin()
 
 dessinBateau.GetTerrain(init.GetTerrain())
 
 init.terrain.bind("<Button-1>",reportEventClick)
+
 init.terrain.pack()
+
+
+
+
+##roger = Joueur.Joueur("roger")
+##bob = Joueur.Joueur("bob")
+##
+##jeu = Bataille.BatailleNavale([roger,bob])
+##jeu.jouer()
+
+
+
 
 grille.root.mainloop()
 
-
-torpilleur = Bateau.Bateau(2)
-contre_torpilleur = Bateau.Bateau(3)
-croiseur = Bateau.Bateau(4)
-sous_marin = Bateau.Bateau(3)
-porte_avion = Bateau.Bateau(5)
-
-bateaux=[torpilleur,contre_torpilleur,croiseur,sous_marin,porte_avion]
-
-roger = Joueur.Joueur("roger",bateaux)
-bob = Joueur.Joueur("bob",bateaux)
-
-jeu = BatailleNavale([roger,bob])
-jeu.jouer()

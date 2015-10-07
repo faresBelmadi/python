@@ -1,12 +1,13 @@
 import Bateau
+import grille
+
 
 class Joueur:
 
     def __init__(self,pseudo):
         self.pseudo=pseudo
-        self.grilleTerrain=Grille()
-        self.grilleVisee= Grille()
         self.bateaux = [5]
+        self.caseVise = [100]
 
     def AjoutBateau(self,bateauInit):
         self.bateaux.append(bateauInit)
@@ -14,15 +15,11 @@ class Joueur:
 
 
 #ne concerne pas le Joueur
-"""
-    def viserUneCase(self):
-        case=input("choisir une case")
-        colonne = ord(lower(case[0])-65)
-        ligne = case[1:]
-        caseVisee=(ligne,colonne)
-        self.grilleVisee.setVisee(caseVIsee)
-        return caseVisee
 
+    def viserUneCase(self):
+
+        return 0
+"""
     def notifierTouchee(self,caseVisee):
         self.grilleVisee.setTouchee(caseVisee)
         return

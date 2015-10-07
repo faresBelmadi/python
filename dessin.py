@@ -57,7 +57,6 @@ class Dessin:
         self.nombreBateau +=1
 
 
-
     def dessinVisee(self):
 
         for i in range(590,1090,50):

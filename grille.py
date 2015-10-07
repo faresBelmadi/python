@@ -8,20 +8,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*
 
-from Tkinter import *
+
+import sys
+
+if (sys.version_info > (3, 0)):
+     # Python 3 code in this block
+    from tkinter import *
+else:
+     # Python 2 code in this block
+    from Tkinter import *
 
 
 root= Tk()
 
-
-
-class grille:
+class grilleInit:
 
 
     def __init__(self):
         self.terrain = Canvas(root,width=1140,height=600, bg="white")
         self.terrain.pack()
-        self.cases=[[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
+
 
         for i in range(40,590,50):
             self.terrain.create_line(i,10,i,510)
@@ -61,9 +67,11 @@ class grille:
         return self.terrain
 
     def setTouchee(self, case):
-        self.case[case[0]][case[1]]= 2 
+        self.case[case[0]][case[1]]= 2
         return
 
     def setVisee(self,case):
-        self.case[case[0]][case[1]]= 1 
+        self.case[case[0]][case[1]]= 1
         return
+
+
