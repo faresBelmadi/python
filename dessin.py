@@ -15,14 +15,15 @@ class Dessin:
         self.nombreBateau = 0
         self.phasePlacement = True
         self.alpha = 65
+        self.positionsBateaux=[[]]
 
     def SetCoord(self,xinit,yinit):
         self.y = yinit
         self.x = xinit
 
     def GetCoord(self):
-        tab = [self.CaseX,self.CaseY]
-        return
+        pos = (self.CaseX,self.CaseY)
+        return pos
 
     def GetTerrain(self,terraininit):
         self.terrain = terraininit
@@ -33,37 +34,98 @@ class Dessin:
                 for j in range(10,510,50) :
                         if j+50 > self.y > j:
                             if self.nombreBateau == 0:
-                                self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
-                                self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*3),i+50,j+(50*4),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*4),i+50,j+(50*5),fill="blue")
+                                if j <= 307:
+                                    position = []
+                                    self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
+                                    pos=(round(i/50),round(j/50))
+                                    position.append(pos)
+                                    self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
+                                    pos=(round(i/50),round(j/50+1))
+                                    position.append(pos)
+                                    self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
+                                    pos=(round(i/50),round(j/50+2))
+                                    position.append(pos)
+                                    self.terrain.create_rectangle(i,j+(50*3),i+50,j+(50*4),fill="blue")
+                                    pos=(round(i/50),round(j/50+3))
+                                    position.append(pos)
+                                    self.terrain.create_rectangle(i,j+(50*4),i+50,j+(50*5),fill="blue")
+                                    pos=(round(i/50),round(j/50+4))
+                                    position.append(pos)
+                                    print(position)
+                                    self.positionsBateaux.append(position)
+                                    self.nombreBateau +=1
 
                             elif self.nombreBateau == 1:
-                                self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
-                                self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*3),i+50,j+(50*4),fill="blue")
+                                if j <= 357:
+                                    position = []
+                                    self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
+                                    pos=(round(i/50),round(j/50))
+                                    if self.estSuperpose(pos) == False:
+                                            position.append(pos)
+                                            self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
+                                            pos=(round(i/50),round(j/50+1))
+                                            position.append(pos)
+                                            self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
+                                            pos=(round(i/50),round(j/50+2))
+                                            position.append(pos)
+                                            self.terrain.create_rectangle(i,j+(50*3),i+50,j+(50*4),fill="blue")
+                                            pos=(round(i/50),round(j/50+3))
+                                            position.append(pos)
+                                            print(position)
+                                            self.positionsBateaux.append(position)
+                                            self.nombreBateau +=1
 
                             elif self.nombreBateau == 2:
-                                self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
-                                self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
+                                if j <= 407:
+                                    position = []
+                                    self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
+                                    pos=(round(i/50),round(j/50))
+                                    if self.estSuperpose(pos) == False:
+                                        position.append(pos)
+                                        self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
+                                        pos=(round(i/50),round(j/50+1))
+                                        position.append(pos)
+                                        self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
+                                        pos=(round(i/50),round(j/50+2))
+                                        position.append(pos)
+                                        print(position)
+                                        self.positionsBateaux.append(position)
+                                        self.nombreBateau +=1
 
                             elif self.nombreBateau == 3:
-                                self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
-                                self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
-                                self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
+                                if j <= 407:
+                                    position = []
+                                    self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
+                                    pos=(round(i/50),round(j/50))
+                                    if self.estSuperpose(pos) == False:
+                                        position.append(pos)
+                                        self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
+                                        pos=(round(i/50),round(j/50+1))
+                                        position.append(pos)
+                                        self.terrain.create_rectangle(i,j+(50*2),i+50,j+(50*3),fill="blue")
+                                        pos=(round(i/50),round(j/50+2))
+                                        position.append(pos)
+                                        print(position)
+                                        self.positionsBateaux.append(position)
+                                        self.nombreBateau +=1
 
                             elif self.nombreBateau == 4:
-                                self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
-                                self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
-                                self.phasePlacement = False
-        self.nombreBateau +=1
+                                if j <= 457:
+                                    position = []
+                                    self.terrain.create_rectangle(i,j,i+50,j+50,fill="blue")
+                                    pos=(round(i/50),round(j/50))
+                                    if self.estSuperpose(pos) == False:
+                                        position.append(pos)
+                                        self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
+                                        pos=(round(i/50),round(j/50+1))
+                                        position.append(pos)
+                                        print(position)
+                                        self.positionsBateaux.append(position)
+                                        self.nombreBateau +=1
+                                        self.phasePlacement = False
 
 
     def dessinVisee(self):
-
         for i in range(590,1090,50):
             if i +50 > self.x > i:# si la coordonnee x est comprise entre i et i+50
                 for j in range(10,510,50) :
@@ -72,3 +134,18 @@ class Dessin:
                             self.CaseY = round(j/50)
                             print (str(self.CaseX) + ", " + chr(self.CaseY+self.alpha))
                             self.terrain.create_oval(i,j,i+50,j+50,fill="red")
+                            self.dessinToucher()
+
+    def dessinToucher(self):
+        for i in range(590,1090,50):
+            if i +50 > self.x > i:# si la coordonnee x est comprise entre i et i+50
+                for j in range(10,510,50) :
+                        if j+50 > self.y > j:
+                            self.terrain.create_oval(i,j,i+50,j+50,fill="black")
+
+    def estSuperpose(self,pos):
+        for bateau in self.positionsBateaux:
+            for position in bateau:
+                if pos == position:
+                    return True
+        return False

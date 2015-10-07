@@ -53,7 +53,6 @@ import Bataille
             tous les batiments sont coul?es
 """
 
-
 def reportEventClick(event):
         ClickX = event.x
         ClickY = event.y
@@ -65,34 +64,26 @@ def reportEventClick(event):
                 if 510 > ClickY > 10:
                     dessinBateau.dessinBateau()
 
-        if dessinBateau.phasePlacement == False:
+        else: 
             if 1090 > ClickX > 590:
                 if 510 > ClickY > 10:
                     dessinBateau.dessinVisee()
-
+                    jeu.jouerUnTour(dessinBateau.GetCoord())
 
 
 init = grille.grilleInit()
 eventClick = event.Event()
 dessinBateau = dessin.Dessin()
+roger = Joueur.Joueur("roger")
+bob = Joueur.Joueur("bob")
+
+jeu = Bataille.BatailleNavale([roger,bob])
 
 dessinBateau.GetTerrain(init.GetTerrain())
 
 init.terrain.bind("<Button-1>",reportEventClick)
 
 init.terrain.pack()
-
-
-
-
-##roger = Joueur.Joueur("roger")
-##bob = Joueur.Joueur("bob")
-##
-##jeu = Bataille.BatailleNavale([roger,bob])
-##jeu.jouer()
-
-
-
 
 grille.root.mainloop()
 

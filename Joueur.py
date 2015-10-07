@@ -7,21 +7,35 @@ class Joueur:
     def __init__(self,pseudo):
         self.pseudo=pseudo
         self.bateaux = [5]
-        self.caseVise = [100]
+        self.grilleBateaux = [[0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0]]
+        
+        self.grilleVisee = [[0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0]]
 
     def AjoutBateau(self,bateauInit):
         self.bateaux.append(bateauInit)
-
-
-
-#ne concerne pas le Joueur
-
-    def viserUneCase(self):
-
-        return 0
-"""
+        for bateau in self.bateaux:
+            for position in bateau.positions:
+                #Ajout des positins des bateaux dans la grille du joueur
+                self.grilleBateaux[position[0]][position[1]]=3
+    
     def notifierTouchee(self,caseVisee):
-        self.grilleVisee.setTouchee(caseVisee)
+        self.grilleVisee[caseVisee[0]][caseVisee[1]]= 2
         return
 
     def estTouche(self, caseVisee):
@@ -31,7 +45,3 @@ class Joueur:
             else:
                 self.touche = False
         return self.touche
-
-    def notifierCaseTouchee(self,caseVisee):
-        self.grilleTerrain.setTouchee(caseVisee)
-        return"""
