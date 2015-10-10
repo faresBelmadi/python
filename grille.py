@@ -3,7 +3,7 @@
 # Purpose:     Python bataille navale B3
 # Version:     PyScripter Portable v2.5.3 x86
 #
-# Author:      Fares BELMADI
+# Author:      Fares BELMADI, Antoine Lacoste
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 # -*- coding: utf-8 -*

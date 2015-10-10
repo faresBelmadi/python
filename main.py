@@ -3,7 +3,7 @@
 # Purpose:     Python bataille navale B3
 # Version:     PyScripter Portable v2.5.3 x86
 #
-# Author:      Fares BELMADI
+# Author:      Fares BELMADI, Antoine Lacoste
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 # -*- coding: utf-8 -*
@@ -22,7 +22,8 @@ import grille
 import dessin
 import Joueur
 import Bataille
-import socketBN
+import socketClient
+import socketServeur
 
 
 """
@@ -79,10 +80,12 @@ eventClick = event.Event()
 dessinBateau = dessin.Dessin()
 
 text = Text(init.terrain)
-text.insert("Entrer un pseudo")
+#text.insert("Entrer un pseudo")
 
-roger = Joueur.Joueur(nom)
-
+roger = Joueur.Joueur("roger")
+socket = socketClient.socketClient("192.168.1.50",60051)
+socket.sendVisee((2,3))
+print(socket.receiv())
 jeu = Bataille.BatailleNavale(roger,True)
 
 dessinBateau.GetTerrain(init.GetTerrain())
