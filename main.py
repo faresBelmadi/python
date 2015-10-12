@@ -83,7 +83,7 @@ text = Text(init.terrain)
 #text.insert("Entrer un pseudo")
 
 roger = Joueur.Joueur("roger")
-socket = socketClient.socketClient("192.168.1.50",60051)
+socket = socketClient.socketClient("10.69.0.246",60055)
 socket.sendVisee((2,3))
 print(socket.receiv())
 jeu = Bataille.BatailleNavale(roger,True)

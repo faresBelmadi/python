@@ -16,7 +16,7 @@ class Joueur:
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0]]
-        
+
         self.grilleVisee = [[0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
@@ -28,7 +28,7 @@ class Joueur:
                               [0,0,0,0,0,0,0,0,0,0]]
 
         self.aTire= False
-        
+
     def AjoutBateaux(self,bateauxInit):
         self.bateaux = bateauxInit
         for bateau in self.bateaux:
@@ -36,15 +36,15 @@ class Joueur:
                 #Ajout des positions des bateaux dans la grille du joueurs
                 self.grilleBateaux[position[0]][position[1]]=3
 
-    #On indique la case visée par le joueur comme visée (rouge sur la grille visée)
+    #On indique la case visee par le joueur comme vis??e (rouge sur la grille visee)
     def notifierVisee(self,caseVisee):
         self.grilleVisee[caseVisee[0]][caseVisee[1]]= 1
         self.aTire=True
 
-    #On indique si une case visée a touché un bateau (case noire sur la grille visée)
+    #On indique si une case vis??e a touch?? un bateau (case noire sur la grille vis??e)
     def notifierTouchee(self,caseVisee):
         self.grilleVisee[caseVisee[0]][caseVisee[1]]= 2
-    
+
     def estTouche(self, caseVisee):
         for bateau in self.bateaux:
             if bateau.contient(caseVisee):

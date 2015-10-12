@@ -19,9 +19,9 @@ class socketServeur(socketBN.socketBN):
             socketServeur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             socketServeur.bind(('', portEcoute))
             socketServeur.listen(1)
-            print("jécoute")
+            print("j'ecoute")
             self.connexion, infos = socketServeur.accept()
-            print("jai un joueur")
+            print("j'ai un joueur")
         except ValueError:
             print ("Erreur connexion")
 

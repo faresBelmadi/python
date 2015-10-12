@@ -18,7 +18,7 @@ class socketClient(socketBN.socketBN):
             socketBN.socketBN.__init__(self)
             self.connexion = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.connexion.connect((addresseDistante, portDistant))
-            print("je suis conecté chez l'hôte")
+            print("je suis conecte chez l'hote")
         except ValueError:
             print ("Erreur connexion")
 
