@@ -15,9 +15,11 @@ class Joueur:
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0]]
 
         self.grilleVisee = [[0,0,0,0,0,0,0,0,0,0],
+                              [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
                               [0,0,0,0,0,0,0,0,0,0],
@@ -29,12 +31,12 @@ class Joueur:
 
         self.aTire= False
 
-    def AjoutBateaux(self,bateauxInit):
+    def ajoutBateaux(self,bateauxInit):
         self.bateaux = bateauxInit
         for bateau in self.bateaux:
             for position in bateau.positions:
                 #Ajout des positions des bateaux dans la grille du joueurs
-                self.grilleBateaux[position[0]][position[1]]=3
+                self.grilleBateaux[position[0]-1][position[1]-1]=3
 
     #On indique la case visee par le joueur comme vis??e (rouge sur la grille visee)
     def notifierVisee(self,caseVisee):

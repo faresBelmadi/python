@@ -16,7 +16,7 @@ class Dessin:
         self.nombreBateau = 0
         self.phasePlacement = True
         self.alpha = 65
-        self.positionsBateaux=[[]]
+        self.positionsBateaux=[]
 
     def SetCoord(self,xinit,yinit):
         self.y = yinit
@@ -56,7 +56,7 @@ class Dessin:
                                     pos=(round(i/50),round(j/50+4))
                                     position.append(pos)
                                     print(position)
-                                    self.positionsBateaux.append(Bateau.Bateau(positions))
+                                    self.positionsBateaux.append(Bateau.Bateau(position))
                                     self.nombreBateau +=1
 
                             elif self.nombreBateau == 1:
@@ -76,7 +76,7 @@ class Dessin:
                                             pos=(round(i/50),round(j/50+3))
                                             position.append(pos)
                                             print(position)
-                                            self.positionsBateaux.append(Bateau.Bateau(positions))
+                                            self.positionsBateaux.append(Bateau.Bateau(position))
                                             self.nombreBateau +=1
 
                             elif self.nombreBateau == 2:
@@ -93,7 +93,7 @@ class Dessin:
                                         pos=(round(i/50),round(j/50+2))
                                         position.append(pos)
                                         print(position)
-                                        self.positionsBateaux.append(Bateau.Bateau(positions))
+                                        self.positionsBateaux.append(Bateau.Bateau(position))
                                         self.nombreBateau +=1
 
                             elif self.nombreBateau == 3:
@@ -110,7 +110,7 @@ class Dessin:
                                         pos=(round(i/50),round(j/50+2))
                                         position.append(pos)
                                         print(position)
-                                        self.positionsBateaux.append(Bateau.Bateau(positions))
+                                        self.positionsBateaux.append(Bateau.Bateau(position))
                                         self.nombreBateau +=1
 
                             elif self.nombreBateau == 4:
@@ -123,8 +123,7 @@ class Dessin:
                                         self.terrain.create_rectangle(i,j+50,i+50,j+(50*2),fill="blue")
                                         pos=(round(i/50),round(j/50+1))
                                         position.append(pos)
-                                        print(position)
-                                        self.positionsBateaux.append(Bateau.Bateau(positions))
+                                        self.positionsBateaux.append(Bateau.Bateau(position))
                                         self.nombreBateau +=1
                                         self.phasePlacement = False
 
