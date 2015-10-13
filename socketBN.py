@@ -9,6 +9,7 @@
 # -*- coding: utf-8 -*
 
 import socket
+import json
 
 class socketBN():
 
@@ -17,7 +18,7 @@ class socketBN():
         
     def sendVisee(self,case):
         try:
-            chCase = str(case[0])+str(case[1])
+            chCase=json.dumps(case)
             self.connexion.send(chCase)
         except ValueError:
             print ("Erreur d'envoi")
@@ -30,15 +31,27 @@ class socketBN():
             print ("Erreur d'envoi")
 
 
-    def receiv(self):
+    def receivVisee(self):
         try:
             self.chRecept = self.connexion.recv(255)
 
         except ValueError:
             print ("Erreur de reception")
 
-        return self.chRecept
+        return json.loads(self.chRecept)
     
+    def receivRetour(self):
+        try:
+            self.chRecept = self.connexion.recv(255)
+            if (self.chRecept="1")
+                retour = True
+            else 
+                retour = False
+        except ValueError:
+            print ("Erreur de reception")
+
+        return retour
+
     def __del__(self):
         self.connexion.close()
 
