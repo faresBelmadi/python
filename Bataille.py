@@ -13,7 +13,7 @@ class BatailleNavale:
     def jouerUnTour(self):
         if self.client == False:
             self.joueur.notifierVisee(self.caseVisee)
-            self.socket.sendVise(self.caseVisee)
+            self.socket.sendVisee(self.caseVisee)
             print(self.caseVisee)
             aTouche=self.socket.receivRetour()
             print(aTouche)
@@ -22,14 +22,14 @@ class BatailleNavale:
                 self.dessin.dessinToucher()
             toucheVisee= self.socket.receivVisee()
             print(toucheVisee)
-            self.socket.send(self.joueur.estTouche(self.caseVisee))
+            self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
         else:            
             toucheVisee= self.socket.receivVisee()
             print(toucheVisee)
-            self.socket.send(self.joueur.estTouche(toucheVisee))
+            self.socket.sendRetour(self.joueur.estTouche(toucheVisee))
             while(self.joueur.aTire == False):
                 self.joueur.notifierVisee(self.caseVisee)
-                self.socket.sendVise(self.caseVisee)
+                self.socket.sendVisee(self.caseVisee)
                 aTouche=self.socket.receivRetour()
                 print(aTouche)
                 if aTouche:
