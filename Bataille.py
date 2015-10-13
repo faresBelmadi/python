@@ -3,8 +3,8 @@ import Bateau
 
 class BatailleNavale:
 
-    def __init__(self, socket, estClient, dessin):
-        self.joueur=[]
+    def __init__(self,joueur, socket, estClient, dessin):
+        self.joueur=joueur
         self.socket=socket
         self.client = estClient
         self.caseVisee=()
@@ -14,7 +14,6 @@ class BatailleNavale:
         if self.client == False:
             self.joueur.notifierVisee(self.caseVisee)
             self.socket.sendVisee(self.caseVisee)
-            print(self.caseVisee)
             aTouche=self.socket.receivRetour()
             print(aTouche)
             if aTouche:

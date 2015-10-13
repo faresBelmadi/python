@@ -18,10 +18,9 @@ class socketBN():
         
     def sendVisee(self,case):
         try:
-            print(str(case))
             chCase=json.dumps(case)
-            print(chCase)
-            self.connexion.send(chCase)
+            print("Case envoyée  : "+chCase)
+            self.connexion.send(chCase.encode())
         except ValueError:
             print ("Erreur d'envoi")
 
@@ -32,14 +31,14 @@ class socketBN():
                 ch = "1"
             else:
                 ch="0"
-            self.connexion.send(ch)
+            self.connexion.send(ch.encode())
         except ValueError:
             print ("Erreur d'envoi")
 
 
     def receivVisee(self):
         try:
-            self.chRecept = self.connexion.recv(255)
+            self.chRecept = self.connexion.recv(255).decode()
 
         except ValueError:
             print ("Erreur de reception")
@@ -48,7 +47,7 @@ class socketBN():
     
     def receivRetour(self):
         try:
-            self.chRecept = self.connexion.recv(255)
+            self.chRecept = self.connexion.recv(255).decode()
             if (self.chRecept=="1"):
                 retour = True
             else:
