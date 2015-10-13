@@ -26,7 +26,11 @@ class socketBN():
 
     def sendRetour(self,chaine):
         try:
-            self.connexion.send(chaine)
+            if chaine:
+                ch = "1"
+            else:
+                ch="0"
+            self.connexion.send(ch)
         except ValueError:
             print ("Erreur d'envoi")
 
@@ -43,9 +47,9 @@ class socketBN():
     def receivRetour(self):
         try:
             self.chRecept = self.connexion.recv(255)
-            if (self.chRecept="1")
+            if (self.chRecept="1"):
                 retour = True
-            else 
+            else:
                 retour = False
         except ValueError:
             print ("Erreur de reception")
