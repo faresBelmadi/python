@@ -92,7 +92,7 @@ dessinBateau.GetTerrain(init.GetTerrain())
 init.terrain.bind("<Button-1>",reportEventClick)
 init.terrain.pack()
 
-self.jouerUnTour()
+jeu.jouerUnTour()
 
 grille.root.mainloop()
 

@@ -30,6 +30,7 @@ class Joueur:
                               [0,0,0,0,0,0,0,0,0,0]]
 
         self.doitTirer = False
+        self.aTirer = False
 
     def ajoutBateaux(self,bateauxInit):
         self.bateaux = bateauxInit

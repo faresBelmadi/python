@@ -14,18 +14,19 @@ class BatailleNavale:
 
     def jouerUnTour(self):
         if self.client == False:
+            if self.joueur.doitTirer == True and self.joueur.aTirer == True:
+                self.joueur.notifierVisee(self.caseVisee)
+                self.socket.sendVisee(self.caseVisee)
+                aTouche=self.socket.receivRetour()
 
-            self.joueur.notifierVisee(self.caseVisee)
-            self.socket.sendVisee(self.caseVisee)
+                if aTouche:
+                    self.joueurs[0].notifierTouchee(self.caseVisee)
+                    self.dessin.dessinToucher()
 
-            aTouche=self.socket.receivRetour()
 
-            if aTouche:
-                self.joueurs[0].notifierTouchee(self.caseVisee)
-                self.dessin.dessinToucher()
-            toucheVisee= self.socket.receivVisee()
-
-            self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
+            if self.joueur.doitTirer == False and self.joueur.aTirer == False:
+                toucheVisee= self.socket.receivVisee()
+                self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
 
         else:
 
@@ -33,13 +34,14 @@ class BatailleNavale:
                 toucheVisee= self.socket.receivVisee()
                 self.joueur.doitTirer = True
 
-            self.socket.sendRetour(self.joueur.estTouche(toucheVisee))
+            elif self.joueur.doitTirer == True and self.joueur.aTirer == True:
+                self.socket.sendRetour(self.joueur.estTouche(toucheVisee))
 
-            self.joueur.notifierVisee(self.caseVisee)
-            self.socket.sendVisee(self.caseVisee)
+                self.joueur.notifierVisee(self.caseVisee)
+                self.socket.sendVisee(self.caseVisee)
 
-            aTouche=self.socket.receivRetour()
-            if aTouche:
-                self.joueurs[0].notifierTouchee(self.caseVisee)
+                aTouche=self.socket.receivRetour()
+                if aTouche:
+                    self.joueurs[0].notifierTouchee(self.caseVisee)
 
 
