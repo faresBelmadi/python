@@ -68,6 +68,7 @@ def reportEventClick(event):
             roger.ajoutBateaux(dessinBateau.getPositionsBateaux())
             if 1090 > ClickX > 590:
                 if 510 > ClickY > 10:
+                    self.joueur.aTirer = True
                     dessinBateau.dessinVisee()
                     jeu.caseVisee=dessinBateau.GetCoord()
                     jeu.jouerUnTour()

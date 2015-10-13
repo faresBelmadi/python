@@ -27,6 +27,7 @@ class BatailleNavale:
             if self.joueur.doitTirer == False and self.joueur.aTirer == False:
                 toucheVisee= self.socket.receivVisee()
                 self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
+                self.joueur.doitTirer = True
 
         else:
 
