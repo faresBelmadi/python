@@ -72,6 +72,7 @@ def reportEventClick(event):
                 if 510 > ClickY > 10:
                     dessinBateau.dessinVisee()
                     jeu.caseVisee=dessinBateau.GetCoord()
+                    print(jeu.caseVisee)
                     jeu.jouerUnTour()
 
 
@@ -83,15 +84,14 @@ text = Text(init.terrain)
 #text.insert("Entrer un pseudo")
 
 roger = Joueur.Joueur("roger")
-#socket = socketClient.socketClient("10.69.0.246",60055)
+socket = socketServeur.socketServeur(60155)
 #socket.sendVisee((2,3))
 #print(socket.receiv())
-jeu = Bataille.BatailleNavale(roger,True)
+jeu = Bataille.BatailleNavale(socket,True,dessinBateau)
 
 dessinBateau.GetTerrain(init.GetTerrain())
 
 init.terrain.bind("<Button-1>",reportEventClick)
-
 init.terrain.pack()
 
 grille.root.mainloop()

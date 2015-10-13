@@ -18,7 +18,7 @@ class socketBN():
     def sendVisee(self,case):
         try:
             chCase = str(case[0])+str(case[1])
-            self.connexion.send(b'coucou')
+            self.connexion.send(chCase)
         except ValueError:
             print ("Erreur d'envoi")
 

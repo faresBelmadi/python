@@ -40,16 +40,17 @@ class Joueur:
 
     #On indique la case visee par le joueur comme vis??e (rouge sur la grille visee)
     def notifierVisee(self,caseVisee):
-        self.grilleVisee[caseVisee[0]][caseVisee[1]]= 1
+        self.grilleVisee[caseVisee['x']][caseVisee['y']]= 1
         self.aTire=True
 
     #On indique si une case vis??e a touch?? un bateau (case noire sur la grille vis??e)
     def notifierTouchee(self,caseVisee):
-        self.grilleVisee[caseVisee[0]][caseVisee[1]]= 2
+        self.grilleVisee[caseVisee['x']][caseVisee['y']]= 2
 
     def estTouche(self, caseVisee):
+        case = (caseVisee['x'],caseVisee['y'])
         for bateau in self.bateaux:
-            if bateau.contient(caseVisee):
+            if bateau.contient(case):
                 self.touche = True
             else:
                 self.touche = False

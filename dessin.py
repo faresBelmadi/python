@@ -23,7 +23,8 @@ class Dessin:
         self.x = xinit
 
     def GetCoord(self):
-        pos = (self.CaseX,self.CaseY)
+        pos = { 'x' : self.CaseX,
+                'y' : self.CaseY }
         return pos
 
     def getPositionsBateaux(self):
@@ -137,7 +138,6 @@ class Dessin:
                             self.CaseY = round(j/50)
                             print (str(self.CaseX) + ", " + chr(self.CaseY+self.alpha))
                             self.terrain.create_oval(i,j,i+50,j+50,fill="red")
-                            self.dessinToucher()
 
     def dessinToucher(self):
         for i in range(590,1090,50):
