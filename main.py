@@ -25,7 +25,6 @@ import Bataille
 import socketClient
 import socketServeur
 
-
 """
     2 joueurs
     5 bateaux
@@ -54,7 +53,6 @@ import socketServeur
     fin
             tous les batiments sont coul?es
 """
-
 def reportEventClick(event):
         ClickX = event.x
         ClickY = event.y
@@ -93,6 +91,8 @@ dessinBateau.GetTerrain(init.GetTerrain())
 
 init.terrain.bind("<Button-1>",reportEventClick)
 init.terrain.pack()
+
+self.jouerUnTour()
 
 grille.root.mainloop()
 
