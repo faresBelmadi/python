@@ -22,6 +22,8 @@ class BatailleNavale:
                 if aTouche:
                     self.joueur.notifierTouchee(self.caseVisee)
                     self.dessin.dessinToucher()
+                else:
+                    self.dessin.dessinPasToucher()
                 self.joueur.doitTirer=False
                 self.joueur.aTirer=False
                 self.jouerUnTour()
