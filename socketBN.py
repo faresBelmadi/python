@@ -22,7 +22,6 @@ class socketBN():
             print("Case envoyÃ©e  : "+chCase)
             #print("chCase encodÃ© : "+chCase.encode())
             self.connexion.send(chCase.encode())
-            print(str(chCase.encode()))
         except ValueError:
             print ("Erreur d'envoi")
 
@@ -45,7 +44,7 @@ class socketBN():
         except ValueError:
             print ("Erreur de reception")
         valeurVisee=json.loads(self.chRecept)
-        print("Case reÃ§ue : "+valeurVisee)
+        print("Case reÃ§ue : "+str(valeurVisee))
         return valeurVisee
 
     def receivRetour(self):

@@ -129,16 +129,24 @@ class Dessin:
                                         self.phasePlacement = False
 
 
-    def dessinVisee(self):
+    #Dessine la case visee si pas touchee
+    def recordClick(self):
         for i in range(590,1090,50):
             if i +50 > self.x > i:# si la coordonnee x est comprise entre i et i+50
                 for j in range(10,510,50) :
                         if j+50 > self.y > j:
                             self.CaseX = round((i-540)/50)
                             self.CaseY = round(j/50)
-                            print (str(self.CaseX) + ", " + chr(self.CaseY+self.alpha))
-                            self.terrain.create_oval(i,j,i+50,j+50,fill="red")
 
+    #Dessine la case visee si touchee
+    def dessinPasToucher(self):
+        for i in range(590,1090,50):
+            if i +50 > self.x > i:# si la coordonnee x est comprise entre i et i+50
+                for j in range(10,510,50) :
+                        if j+50 > self.y > j:
+                            self.terrain.create_oval(i,j,i+50,j+50,fill="red")
+                            
+    #Dessine la case visee si touchee
     def dessinToucher(self):
         for i in range(590,1090,50):
             if i +50 > self.x > i:# si la coordonnee x est comprise entre i et i+50
@@ -152,3 +160,6 @@ class Dessin:
                 if pos == position:
                     return True
         return False
+
+    def dessinOpponent(self,caseVisee):
+        self.terrain.create_oval((caseVisee['x']*50),caseVisee['y']*50,((caseVisee['x']+1)*50),(caseVisee['y']+1)*50,fill="green")

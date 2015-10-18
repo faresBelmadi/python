@@ -51,8 +51,6 @@ class Joueur:
     def estTouche(self, caseVisee):
         case = (caseVisee['x'],caseVisee['y'])
         for bateau in self.bateaux:
-            if bateau.contient(case):
-                self.touche = True
-            else:
-                self.touche = False
-        return self.touche
+            if bateau.estTouche(case):
+                return True
+        return False

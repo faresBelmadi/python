@@ -9,8 +9,8 @@ class BatailleNavale:
         self.client = estClient
         self.caseVisee=()
         self.dessin=dessin
-        if estClient:
-            self.jouerUnTour()
+        if not estClient:
+            self.joueur.doitTirer= True
 
     def jouerUnTour(self):
         if self.client == False:
@@ -20,29 +20,33 @@ class BatailleNavale:
                 aTouche=self.socket.receivRetour()
 
                 if aTouche:
-                    self.joueurs[0].notifierTouchee(self.caseVisee)
+                    self.joueur.notifierTouchee(self.caseVisee)
                     self.dessin.dessinToucher()
+                self.joueur.doitTirer=False
+                self.joueur.aTirer=False
+                self.jouerUnTour()
 
 
             if self.joueur.doitTirer == False and self.joueur.aTirer == False:
-                toucheVisee= self.socket.receivVisee()
+                self.caseVisee = self.socket.receivVisee()
                 self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
                 self.joueur.doitTirer = True
 
         else:
 
             if self.joueur.doitTirer == False:
-                toucheVisee= self.socket.receivVisee()
+                self.caseVisee= self.socket.receivVisee()
+                self.dessin.dessinOpponent(self.caseVisee)
+                self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
                 self.joueur.doitTirer = True
 
             elif self.joueur.doitTirer == True and self.joueur.aTirer == True:
-                self.socket.sendRetour(self.joueur.estTouche(toucheVisee))
-
                 self.joueur.notifierVisee(self.caseVisee)
                 self.socket.sendVisee(self.caseVisee)
 
                 aTouche=self.socket.receivRetour()
                 if aTouche:
-                    self.joueurs[0].notifierTouchee(self.caseVisee)
-
-
+                    self.joueur.notifierTouchee(self.caseVisee)
+                self.joueur.doitTirer=False
+                self.joueur.aTirer=False
+                self.jouerUnTour()
