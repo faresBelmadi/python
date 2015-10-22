@@ -29,7 +29,7 @@ class Dessin:
 
     def getPositionsBateaux(self):
         return self.positionsBateaux
-    
+
     def GetTerrain(self,terraininit):
         self.terrain = terraininit
 
@@ -145,7 +145,7 @@ class Dessin:
                 for j in range(10,510,50) :
                         if j+50 > self.y > j:
                             self.terrain.create_oval(i,j,i+50,j+50,fill="red")
-                            
+
     #Dessine la case visee si touchee
     def dessinToucher(self):
         for i in range(590,1090,50):
