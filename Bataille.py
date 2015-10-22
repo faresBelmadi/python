@@ -9,6 +9,7 @@ class BatailleNavale:
         self.client = estClient
         self.caseVisee=()
         self.dessin=dessin
+        #Le serveur commence
         if not estClient:
             self.joueur.doitTirer= True
 
@@ -36,19 +37,18 @@ class BatailleNavale:
 
         else:
 
-            if self.joueur.doitTirer == False:
-                self.caseVisee= self.socket.receivVisee()
-                self.dessin.dessinOpponent(self.caseVisee)
-                self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
+            if self.joueur.doitTirer == False and self.dessin.phasePlacement == False:
+                toucheVisee= self.socket.receivVisee()
+                self.socket.sendRetour(self.joueur.estTouche(toucheVisee))
                 self.joueur.doitTirer = True
 
-            elif self.joueur.doitTirer == True and self.joueur.aTirer == True:
+            elif self.joueur.doitTirer == True and self.joueur.aTirer == True and self.dessin.phasePlacement == False:
                 self.joueur.notifierVisee(self.caseVisee)
                 self.socket.sendVisee(self.caseVisee)
 
+
                 aTouche=self.socket.receivRetour()
                 if aTouche:
-                    self.joueur.notifierTouchee(self.caseVisee)
-                self.joueur.doitTirer=False
+                    self.joueurs[0].notifierTouchee(self.caseVisee)
                 self.joueur.aTirer=False
                 self.jouerUnTour()
