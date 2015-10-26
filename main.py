@@ -71,7 +71,6 @@ def reportEventClick(event):
                     roger.aTirer = True
                     dessinBateau.recordClick()
                     jeu.caseVisee=dessinBateau.GetCoord()
-                    print("La partie commence")
                     jeu.jouerUnTour()
 
 

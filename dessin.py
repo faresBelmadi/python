@@ -162,4 +162,9 @@ class Dessin:
         return False
 
     def dessinOpponent(self,caseVisee):
-        self.terrain.create_oval((caseVisee['x']*50),caseVisee['y']*50,((caseVisee['x']+1)*50),(caseVisee['y']+1)*50,fill="green")
+        for i in range(40,540,50):
+            if i +50 > caseVisee['x']*50 > i:# si la coordonnee x est comprise entre i et i+50
+                for j in range(10,510,50) :
+                        if j+50 > caseVisee['y']*50 > j:
+                            self.terrain.create_oval(i,j,(i+50),(j+50),fill="green")
+                            break

@@ -6,7 +6,6 @@ class Bateau:
 
     def estTouche(self, case):
         for position in self.positions:
-            print("pos = case : "+ str(case == position))
             if case == position:
                 return True
         return False

@@ -36,19 +36,22 @@ class BatailleNavale:
                 self.joueur.doitTirer = True
 
         else:
-
             if self.joueur.doitTirer == False and self.dessin.phasePlacement == False:
-                toucheVisee= self.socket.receivVisee()
-                self.socket.sendRetour(self.joueur.estTouche(toucheVisee))
+                self.caseVisee= self.socket.receivVisee()
+                self.socket.sendRetour(self.joueur.estTouche(self.caseVisee))
+                self.dessin.dessinOpponent(self.caseVisee)
                 self.joueur.doitTirer = True
 
             elif self.joueur.doitTirer == True and self.joueur.aTirer == True and self.dessin.phasePlacement == False:
                 self.joueur.notifierVisee(self.caseVisee)
                 self.socket.sendVisee(self.caseVisee)
 
-
                 aTouche=self.socket.receivRetour()
                 if aTouche:
-                    self.joueurs[0].notifierTouchee(self.caseVisee)
+                    self.joueur.notifierTouchee(self.caseVisee)                    
+                    self.dessin.dessinToucher()
+                else:
+                    self.dessin.dessinPasToucher()
                 self.joueur.aTirer=False
+                self.joueur.doitTirer=False
                 self.jouerUnTour()
