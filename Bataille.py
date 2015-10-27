@@ -21,7 +21,6 @@ class BatailleNavale:
                 aTouche=self.socket.receivRetour()
 
                 if aTouche:
-                    self.joueur.notifierTouchee(self.caseVisee)
                     self.dessin.dessinToucher()
                 else:
                     self.dessin.dessinPasToucher()
@@ -48,8 +47,7 @@ class BatailleNavale:
                 self.socket.sendVisee(self.caseVisee)
 
                 aTouche=self.socket.receivRetour()
-                if aTouche:
-                    self.joueur.notifierTouchee(self.caseVisee)					
+                if aTouche:				
                     self.dessin.dessinToucher()
                 else:
                     self.dessin.dessinPasToucher()
