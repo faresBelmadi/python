@@ -72,25 +72,38 @@ def reportEventClick(event):
                     dessinBateau.recordClick()
                     jeu.caseVisee=dessinBateau.GetCoord()
                     jeu.jouerUnTour()
+global socket
+def SocketInitServeur():
+    global socket
+    socket = socketServeur.socketServeur(10010)
+    batailleNavale(socket)
 
+def SocketInitClient():
+    global socket
+    socket = socketClient.socketClient("127.0.0.1",10010)
+    batailleNavale(socket)
 
+def batailleNavale(socket):
+    jeu = Bataille.BatailleNavale(roger, socket, False ,dessinBateau)
 init = grille.grilleInit()
 eventClick = event.Event()
 dessinBateau = dessin.Dessin()
 
 text = Text(init.terrain)
-#text.insert("Entrer un pseudo")
 
 roger = Joueur.Joueur("roger")
-#socket = socketClient.socketClient("78.192.172.41",10010)
-socket = socketServeur.socketServeur(60155)
-#socket.sendVisee((2,3))
-#print(socket.receiv())
-jeu = Bataille.BatailleNavale(roger, socket, False ,dessinBateau)
+
 
 dessinBateau.GetTerrain(init.GetTerrain())
 
 init.terrain.bind("<Button-1>",reportEventClick)
-init.terrain.pack()
+init.terrain.bind()
+
+boutonServer = Button(grille.root, text="Serveur", command=SocketInitServeur)
+boutonServer.pack()
+
+
+boutonClient = Button(grille.root, text="Client", command=SocketInitClient)
+boutonClient.pack()
 
 grille.root.mainloop()
